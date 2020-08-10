@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AACA,QACE,aAAc,CACd,uBACF","file":"main.f93e4507.chunk.css","sourcesContent":["\n.active {\n  color: #d4de3c;\n  border-bottom: 1px solid;\n}\n"]}
