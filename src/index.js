@@ -1,18 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import { theme, ThemeProvider, CSSReset } from "@chakra-ui/core";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import { theme, ThemeProvider, CSSReset } from '@chakra-ui/core'
 
-const breakpoints = ["360px", "768px", "1024px", "1440px"];
-breakpoints.sm = breakpoints[0];
-breakpoints.md = breakpoints[1];
-breakpoints.lg = breakpoints[2];
-breakpoints.xl = breakpoints[3];
+const breakpoints = ['700px', '900px', '1024px', '1440px']
+breakpoints.sm = breakpoints[0]
+breakpoints.md = breakpoints[1]
+breakpoints.lg = breakpoints[2]
+breakpoints.xl = breakpoints[3]
 
 const newTheme = {
   ...theme,
-  breakpoints
-};
+  breakpoints,
+}
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,8 +21,8 @@ ReactDOM.render(
       <App />
     </ThemeProvider>
   </React.StrictMode>,
-  document.getElementById("root")
-);
+  document.getElementById('root')
+)
 // function App() {
 //   return (
 //     <ThemeProvider theme={newTheme}>

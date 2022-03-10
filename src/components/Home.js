@@ -35,7 +35,7 @@ const Home = () => {
       // paddingBottom="20px"
       p={5}
     >
-      <SimpleGrid columns={[1, 2, 3, 3]} spacing="15px">
+      <SimpleGrid columns={[1, 2, 3]} spacing="15px">
         {context.blogs.map((blog) => {
           return (
             <Box position="relative" key={blog.id}>
@@ -59,7 +59,7 @@ const Home = () => {
               </Box>
               <Link to={`/edit/${blog.id}`}>
                 <Box
-                  maxW="sm"
+                  // maxW="sm"
                   borderWidth="1px"
                   shadow="md"
                   rounded="lg"
