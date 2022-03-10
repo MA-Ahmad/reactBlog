@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import { theme, ThemeProvider, CSSReset } from '@chakra-ui/core'
 
-const breakpoints = ['700px', '900px', '1024px', '1440px']
+const breakpoints = ['600px', '850px', '900px', '1440px']
 breakpoints.sm = breakpoints[0]
 breakpoints.md = breakpoints[1]
 breakpoints.lg = breakpoints[2]

@@ -35,7 +35,7 @@ const Header = (props) => {
           </Heading>
         </Flex>
 
-        <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
+        <Box display={['block', 'none', 'none', 'none']} onClick={handleToggle}>
           <svg
             fill="white"
             width="12px"
@@ -48,8 +48,8 @@ const Header = (props) => {
         </Box>
 
         <Box
-          display={{ sm: show ? 'block' : 'none', md: 'flex' }}
-          width={{ sm: 'full', md: 'auto' }}
+          display={[show ? 'block' : 'none', 'flex', 'flex', 'flex']}
+          width={['full', 'auto', 'auto', 'auto']}
           alignItems="center"
           flexGrow={1}
         >
@@ -60,7 +60,7 @@ const Header = (props) => {
               </NavLink>
             </Heading>
           </Box>
-          <Box ml={{ base: 0, md: 3 }}>
+          <Box ml={[0, 3, 3, 3]}>
             <Heading fontSize="20px">
               <NavLink exact to="/" activeClassName="active">
                 List
@@ -69,10 +69,7 @@ const Header = (props) => {
           </Box>
         </Box>
 
-        <Box
-          display={{ sm: show ? 'block' : 'none', md: 'block' }}
-          mt={{ base: 4, md: 0 }}
-        >
+        <Box display={['none', 'block', 'block', 'block']} mt={[4, 0, 0, 0]}>
           <Link
             href="https://github.com/MA-Ahmad/reactBlog"
             isExternal
