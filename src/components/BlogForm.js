@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from 'react'
 import {
   Box,
   Flex,
@@ -10,62 +10,62 @@ import {
   Button,
   Heading,
   useToast,
-  FormErrorMessage
-} from "@chakra-ui/core";
-import BlogContext from "../context/blog-context";
-import { Formik, Field } from "formik";
-import { FadeTransform } from "react-animation-components";
+  FormErrorMessage,
+} from '@chakra-ui/core'
+import BlogContext from '../context/blog-context'
+import { Formik, Field } from 'formik'
+import { FadeTransform } from 'react-animation-components'
 
 const BlogForm = ({ match, history, editMode }) => {
   const [initialValues, setInitialValues] = useState({
-    title: "",
-    authorName: "",
-    content: ""
-  });
-  const [id, setId] = useState(match.params.id);
-  const context = useContext(BlogContext);
-  const toast = useToast();
+    title: '',
+    authorName: '',
+    content: '',
+  })
+  const [id, setId] = useState(match.params.id)
+  const context = useContext(BlogContext)
+  const toast = useToast()
 
   useEffect(() => {
     if (editMode) {
       const selectedBlog = context.blogs.filter(
-        blog => blog.id === Number(id)
-      )[0];
-      setInitialValues(selectedBlog);
+        (blog) => blog.id === Number(id)
+      )[0]
+      setInitialValues(selectedBlog)
     } else {
       setInitialValues({
-        title: "",
-        authorName: "",
-        content: ""
-      });
+        title: '',
+        authorName: '',
+        content: '',
+      })
     }
-  }, [editMode]);
+  }, [editMode])
 
   function validateTitle(value) {
-    let error;
+    let error
     if (!value) {
-      error = "Title is required";
+      error = 'Title is required'
     } else if (value.length < 5) {
-      error = "Must be 5 characters or more";
+      error = 'Must be 5 characters or more'
     }
-    return error;
+    return error
   }
 
   function validateAuthorName(value) {
-    let error;
+    let error
     if (!value) {
-      error = "Name is required";
+      error = 'Name is required'
     } else if (value.length < 5) {
-      error = "Must be 5 characters or more";
+      error = 'Must be 5 characters or more'
     }
-    return error;
+    return error
   }
 
   return (
     <FadeTransform
       in
       transformProps={{
-        exitTransform: "scale(0.5) translateX(-50%)"
+        exitTransform: 'scale(0.5) translateX(-50%)',
       }}
     >
       <Box
@@ -74,7 +74,7 @@ const BlogForm = ({ match, history, editMode }) => {
         my="auto"
         paddingTop="20px"
         paddingBottom="20px"
-        height={"100%"}
+        height={'100%'}
       >
         <Flex
           alignItems="center"
@@ -82,10 +82,16 @@ const BlogForm = ({ match, history, editMode }) => {
           flexDirection="column"
         >
           <Heading as="h1" color="teal.500" size="lg" p={5}>
-            {editMode ? "Update" : "Create"} a Blog
+            {editMode ? 'Update' : 'Create'} a Blog
           </Heading>
 
-          <Box p={5} shadow="md" borderWidth="1px" rounded="md" width={"40%"}>
+          <Box
+            p={5}
+            shadow="md"
+            borderWidth="1px"
+            rounded="md"
+            width={{ base: '60%', md: '40%' }}
+          >
             <Stack isInline spacing={8} align="center">
               <Formik
                 enableReinitialize
@@ -93,38 +99,38 @@ const BlogForm = ({ match, history, editMode }) => {
                 onSubmit={(values, actions) => {
                   setTimeout(() => {
                     if (editMode) {
-                      values["id"] = Number(id);
-                      context.editBlog(values);
-                      setInitialValues(values);
+                      values['id'] = Number(id)
+                      context.editBlog(values)
+                      setInitialValues(values)
                     } else {
-                      context.createBlog(values);
-                      actions.resetForm({});
+                      context.createBlog(values)
+                      actions.resetForm({})
                     }
-                    history.push("/");
+                    history.push('/')
 
-                    actions.setSubmitting(false);
+                    actions.setSubmitting(false)
                     const text = editMode
-                      ? "Blog post updated successfully"
-                      : "You've successfully created a blog post.";
+                      ? 'Blog post updated successfully'
+                      : "You've successfully created a blog post."
                     toast({
-                      position: "bottom",
-                      title: "Notification",
+                      position: 'bottom',
+                      title: 'Notification',
                       description: text,
-                      status: "success",
+                      status: 'success',
                       duration: 2000,
-                      isClosable: true
-                    });
-                  }, 200);
+                      isClosable: true,
+                    })
+                  }, 200)
                 }}
               >
                 {({ values, handleChange, handleSubmit, isSubmitting }) => {
                   return (
-                    <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+                    <form onSubmit={handleSubmit} style={{ width: '100%' }}>
                       <Box paddingBottom={3}>
                         <Field
                           name="title"
                           validate={validateTitle}
-                          width={"100%"}
+                          width={'100%'}
                         >
                           {({ field, form }) => (
                             <FormControl
@@ -151,7 +157,7 @@ const BlogForm = ({ match, history, editMode }) => {
                         <Field
                           name="authorName"
                           validate={validateAuthorName}
-                          width={"100%"}
+                          width={'100%'}
                         >
                           {({ field, form }) => (
                             <FormControl
@@ -178,7 +184,7 @@ const BlogForm = ({ match, history, editMode }) => {
                       <Box paddingBottom={5}>
                         <FormLabel htmlFor="content">Content</FormLabel>
                         <Textarea
-                          height={"20vh"}
+                          height={'20vh'}
                           name="content"
                           value={values.content}
                           onChange={handleChange}
@@ -191,10 +197,10 @@ const BlogForm = ({ match, history, editMode }) => {
                         type="submit"
                         float="right"
                       >
-                        {editMode ? "Update" : "Create"}
+                        {editMode ? 'Update' : 'Create'}
                       </Button>
                     </form>
-                  );
+                  )
                 }}
               </Formik>
             </Stack>
@@ -202,7 +208,7 @@ const BlogForm = ({ match, history, editMode }) => {
         </Flex>
       </Box>
     </FadeTransform>
-  );
-};
+  )
+}
 
-export default BlogForm;
+export default BlogForm

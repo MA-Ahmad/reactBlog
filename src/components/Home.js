@@ -1,41 +1,42 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Box, Badge, SimpleGrid, useToast } from "@chakra-ui/core";
-import Dotdotdot from "react-dotdotdot";
-import BlogContext from "../context/blog-context";
-import { Link } from "react-router-dom";
-import PageLoader from "./PageLoader";
-import { Img } from "react-image";
+import React, { useContext, useState, useEffect } from 'react'
+import { Box, Badge, SimpleGrid, useToast } from '@chakra-ui/core'
+import Dotdotdot from 'react-dotdotdot'
+import BlogContext from '../context/blog-context'
+import { Link } from 'react-router-dom'
+import PageLoader from './PageLoader'
+import { Img } from 'react-image'
 
 const Home = () => {
-  const context = useContext(BlogContext);
-  const [blogId, setBlogId] = useState("");
-  const toast = useToast();
+  const context = useContext(BlogContext)
+  const [blogId, setBlogId] = useState('')
+  const toast = useToast()
 
   useEffect(() => {
-    context.deleteBlog(blogId);
-  }, [blogId]);
+    context.deleteBlog(blogId)
+  }, [blogId])
 
-  const handleDelete = id => {
+  const handleDelete = (id) => {
     toast({
-      position: "bottom",
-      title: "Notification",
-      description: "Blog deleted successfully",
-      status: "success",
+      position: 'bottom',
+      title: 'Notification',
+      description: 'Blog deleted successfully',
+      status: 'success',
       duration: 2000,
-      isClosable: true
-    });
-    setBlogId(id);
-  };
+      isClosable: true,
+    })
+    setBlogId(id)
+  }
   return (
     <Box
       maxWidth="1200px"
       mx="auto"
       my="auto"
-      paddingTop="20px"
-      paddingBottom="20px"
+      // paddingTop="20px"
+      // paddingBottom="20px"
+      p={5}
     >
-      <SimpleGrid columns={3} spacing="15px">
-        {context.blogs.map(blog => {
+      <SimpleGrid columns={[1, 2, 3, 3]} spacing="15px">
+        {context.blogs.map((blog) => {
           return (
             <Box position="relative" key={blog.id}>
               <Box
@@ -66,7 +67,7 @@ const Home = () => {
                   position="relative"
                 >
                   <Img
-                    src={"https://bit.ly/2Z4KKcF"}
+                    src={'https://bit.ly/2Z4KKcF'}
                     alt="Blog image"
                     loader={<PageLoader />}
                   />
@@ -105,11 +106,11 @@ const Home = () => {
                 </Box>
               </Link>
             </Box>
-          );
+          )
         })}
       </SimpleGrid>
     </Box>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
