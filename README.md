@@ -32,6 +32,9 @@
 - Run `npm install`
 - Run `npm start`
 
+## View and copy code of your favourite components
+[TemplatesKart website](https://templateskart.com/projects/blog-app)
+
 ## Author
 
 Muhammad Ahmad
